@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tksmart/model/user_model.dart';
+import 'package:tksmart/screen/main_admin.dart';
 import 'package:tksmart/utility/my_constant.dart';
 import 'package:tksmart/utility/my_style.dart';
 import 'package:tksmart/utility/normal_dialog.dart';
@@ -26,7 +27,7 @@ class _SignInState extends State<SignIn> {
       body: Container(
         decoration: BoxDecoration(
           gradient: RadialGradient(
-            colors: <Color>[Colors.white, MyStyle().darkColor],
+            colors: <Color>[Colors.white, Colors.blueGrey],
             center: Alignment(0, -0.3),
             radius: 1.0,
           ),
@@ -38,7 +39,7 @@ class _SignInState extends State<SignIn> {
               children: <Widget>[
                 MyStyle().showLogo(),
                 MyStyle().mySizebox(),
-                MyStyle().showTitle('Trakan Smart'),
+                MyStyle().showTitle('TKH Smart'),
                 MyStyle().mySizebox(),
                 userForm(),
                 MyStyle().mySizebox(),
@@ -87,15 +88,15 @@ class _SignInState extends State<SignIn> {
         UserModel userModel = UserModel.fromJson(map);
         if (password == userModel.password) {
           String chooseType = userModel.chooseType;
-          // if (chooseType == 'User') {
-          //   routeTuService(MainUser(), userModel);
-          // } else if (chooseType == 'Shop') {
-          //   routeTuService(MainShop(), userModel);
-          // } else if (chooseType == 'Rider') {
-          //   routeTuService(MainRider(), userModel);
-          // } else {
-          //   normalDialog(context, 'Error');
-          // }
+          if (chooseType == 'User') {
+            // routeTuService(MainUser(), userModel);
+          } else if (chooseType == 'Shop') {
+            // routeTuService(MainShop(), userModel);
+          } else if (chooseType == 'Admin') {
+            routeTuService(MainAdmin(), userModel);
+          } else {
+            normalDialog(context, 'Error');
+          }
         } else {
           normalDialog(context, 'Password ผิด กรุณาลองใหม่');
         }

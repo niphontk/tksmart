@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tksmart/screen/main_admin.dart';
 import 'package:tksmart/screen/signin.dart';
 import 'package:tksmart/utility/my_style.dart';
 import 'package:tksmart/utility/normal_dialog.dart';
@@ -24,7 +25,10 @@ class _HomeState extends State<Home> {
       if (chooseType != null && chooseType.isNotEmpty) {
         if (chooseType == 'User') {
         } else if (chooseType == 'Shop') {
-        } else if (chooseType == 'Rider') {
+        } else if (chooseType == 'Admin') {
+          routeToService(
+            MainAdmin(),
+          );
         } else {
           normalDialog(context, 'Error');
         }
@@ -43,12 +47,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Trakan Smart'),
-          ],
-        ),
+        title: Text('TKH Smart'),
       ),
       drawer: showDrawer(),
     );
