@@ -12,11 +12,12 @@ class MainAdmin extends StatefulWidget {
 
 class _MainAdminState extends State<MainAdmin> {
   String nameUser;
+  Widget currentWidget;
 
   @override
-  void initState() {
-    // TODO: implement initState
+  void initState() {    
     super.initState();
+    currentWidget = ShowListAdminAll();
     findUser();
   }
 
@@ -28,7 +29,7 @@ class _MainAdminState extends State<MainAdmin> {
     });
   }
 
-  Widget currentWidget = ShowListAdminAll();
+  // Widget currentWidget = ShowListAdminAll();
 
   @override
   Widget build(BuildContext context) {
